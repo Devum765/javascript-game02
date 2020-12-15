@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>空母決戦</title>
+<title>空母決戦 ver1.10</title>
 </head>
 <body>
 
 <!--『表示画面』-->
 <form name="Data" action="#">
-第<input name="S01" type="text" size="1" value="">日目 <input name="S02" type="text" size="1" value="">時
+第<input name="S01" type="text" size="1" value="">日目 <input name="S02" type="text" size="1" value="">時 <input name="S03" type="text" size="2" value="">
 </form>
 <br>
 <br>
@@ -58,14 +58,14 @@
 	<option>格納庫
 	<option>攻撃隊
 	<option>艦隊直掩
-	<option>偵察
+	<option>索敵隊
 </select>から
 <select name="S04">
 	<option>甲板
 	<option>格納庫
 	<option>攻撃隊
 	<option>艦隊直掩
-	<option>偵察
+	<option>索敵隊
 	<option>廃棄
 </select>へ</form><form name="Kisuu" action="#">
 <input type="button" value="-5" onclick="M5()">
@@ -101,6 +101,8 @@
 	window.document.Data.S01.defaultValue = DataS01;
 	DataS02 = 4;
 	window.document.Data.S02.defaultValue = DataS02;
+	DataS03 = "夜間";
+	window.document.Data.S03.defaultValue = DataS03;
 	<!--第一空母、初期設定-->
 	window.document.C01.S00.defaultValue = "損傷なし";
 	var Kubo01Son = 0;<!--損傷なし＝ゼロ、小破＝１、中破＝２、大破＝３、撃沈＝４-->
@@ -385,7 +387,8 @@
 		}
 	}
 <!--『艦載機移動コマンド』-->
-	function Jikkou() {
+function Jikkou() {
+	if (Game==0) {
 		var n = document.Select01.S01.selectedIndex;
 		switch (n) {
 			case 0: <!--第一空母-->
@@ -525,7 +528,7 @@
 										alert("艦隊直掩に回せるのは戦闘機のみです");
 									break;
 									case 4:
-										alert("格納庫の機体は、一度甲板に出してからでないと偵察隊として発艦できません");
+										alert("格納庫の機体は、一度甲板に出してからでないと索敵隊として発艦できません");
 									break;
 									case 5:
 										if (C01S03A<KisuuHyouji) {
@@ -590,11 +593,11 @@
 							case 3:<!--第一空母、攻撃機、艦隊直掩-->
 								alert("艦隊直掩の任務に就いているのは戦闘機です");
 							break;
-							case 4:<!--第一空母、攻撃機、偵察-->
+							case 4:<!--第一空母、攻撃機、索敵隊-->
 								var n = document.Select01.S04.selectedIndex;
 								switch (n) {
 									case 0:
-										alert("帰投した偵察隊は格納庫へ帰還させなければなりません");
+										alert("帰投した索敵隊は格納庫へ帰還させなければなりません");
 									break;
 									case 1:
 										if (C5<KisuuHyouji) {
@@ -608,16 +611,16 @@
 										}
 									break;
 									case 2:
-										alert("帰投した偵察隊は格納庫へ帰還させなければなりません");
+										alert("帰投した索敵隊は格納庫へ帰還させなければなりません");
 									break;
 									case 3:
-										alert("帰投した偵察隊は格納庫へ帰還させなければなりません");
+										alert("帰投した索敵隊は格納庫へ帰還させなければなりません");
 									break;
 									case 4:
-										alert("帰投した偵察隊は格納庫へ帰還させなければなりません");
+										alert("帰投した索敵隊は格納庫へ帰還させなければなりません");
 									break;
 									case 5:
-										alert("帰投した偵察隊は格納庫へ帰還させなければなりません");
+										alert("帰投した索敵隊は格納庫へ帰還させなければなりません");
 									break;
 								}
 							break;
@@ -705,7 +708,7 @@
 										}
 									break;
 									case 4:
-										alert("偵察任務に回せるのは攻撃機のみです");
+										alert("索敵任務に回せるのは攻撃機のみです");
 									break;
 									case 5:
 										if (C01S02A<KisuuHyouji) {
@@ -748,7 +751,7 @@
 										alert("格納庫の機体は、一度甲板に出してからでないと直掩隊として発艦できません");
 									break;
 									case 4:
-										alert("格納庫の機体は、一度甲板に出してからでないと偵察隊として発艦できません");
+										alert("格納庫の機体は、一度甲板に出してからでないと索敵隊として発艦できません");
 									break;
 									case 5:
 										if (C01S04A<KisuuHyouji) {
@@ -849,8 +852,8 @@
 									break;
 								}
 							break;
-							case 4:<!--第一空母、戦闘機、偵察-->
-								alert("偵察の任務に就いているのは攻撃機です");
+							case 4:<!--第一空母、戦闘機、索敵隊-->
+								alert("索敵の任務に就いているのは攻撃機です");
 							break;
 						}
 					break;
@@ -994,7 +997,7 @@
 										alert("艦隊直掩に回せるのは戦闘機のみです");
 									break;
 									case 4:
-										alert("格納庫の機体は、一度甲板に出してからでないと偵察隊として発艦できません");
+										alert("格納庫の機体は、一度甲板に出してからでないと索敵隊として発艦できません");
 									break;
 									case 5:
 										if (C02S03A<KisuuHyouji) {
@@ -1059,11 +1062,11 @@
 							case 3:<!--第二空母、攻撃機、艦隊直掩-->
 								alert("艦隊直掩の任務に就いているのは戦闘機です");
 							break;
-							case 4:<!--第二空母、攻撃機、偵察-->
+							case 4:<!--第二空母、攻撃機、索敵-->
 								var n = document.Select01.S04.selectedIndex;
 								switch (n) {
 									case 0:
-										alert("帰投した偵察隊は格納庫へ帰還させなければなりません");
+										alert("帰投した索敵隊は格納庫へ帰還させなければなりません");
 									break;
 									case 1:
 										if (C5<KisuuHyouji) {
@@ -1077,16 +1080,16 @@
 										}
 									break;
 									case 2:
-										alert("帰投した偵察隊は格納庫へ帰還させなければなりません");
+										alert("帰投した索敵隊は格納庫へ帰還させなければなりません");
 									break;
 									case 3:
-										alert("帰投した偵察隊は格納庫へ帰還させなければなりません");
+										alert("帰投した索敵隊は格納庫へ帰還させなければなりません");
 									break;
 									case 4:
-										alert("帰投した偵察隊は格納庫へ帰還させなければなりません");
+										alert("帰投した索敵隊は格納庫へ帰還させなければなりません");
 									break;
 									case 5:
-										alert("帰投した偵察隊は格納庫へ帰還させなければなりません");
+										alert("帰投した索敵隊は格納庫へ帰還させなければなりません");
 									break;
 								}
 							break;
@@ -1166,7 +1169,7 @@
 										}
 									break;
 									case 4:
-										alert("偵察任務に回せるのは攻撃機のみです");
+										alert("索敵任務に回せるのは攻撃機のみです");
 									break;
 									case 5:
 										if (C02S02A<KisuuHyouji) {
@@ -1209,7 +1212,7 @@
 										alert("格納庫の機体は、一度甲板に出してからでないと直掩隊として発艦できません");
 									break;
 									case 4:
-										alert("格納庫の機体は、一度甲板に出してからでないと偵察隊として発艦できません");
+										alert("格納庫の機体は、一度甲板に出してからでないと索敵隊として発艦できません");
 									break;
 									case 5:
 										if (C02S04A<KisuuHyouji) {
@@ -1310,8 +1313,8 @@
 									break;
 								}
 							break;
-							case 4:<!--第二空母、戦闘機、偵察-->
-								alert("偵察の任務に就いているのは攻撃機です");
+							case 4:<!--第二空母、戦闘機、索敵-->
+								alert("索敵の任務に就いているのは攻撃機です");
 							break;
 						}
 					break;
@@ -1320,8 +1323,10 @@
 			break;
 		}
 	}
+}
 <!--『ターン更新コマンド』-->
-	function TurnKoushin() {
+function TurnKoushin() {
+	if (Game==0) {
 		if (C01S01A+C01S02A>30) {
 			alert("甲板に載せられる航空機は30機が上限です");
 		}
@@ -1603,20 +1608,20 @@
 																			}
 																			HenH = HenH-1;
 																			HenJ = 1;
+																		}
+																		if (HenJ==0) {
+																			if (EKubo03S<=3) {
+																				if(Math.random()>=0.85) {
+																					EKubo03S = EKubo03S+1;
+																				}
+																				if(Math.random()>=0.80) {
+																					HenI = HenI-1;
+																				}
+																				HenH = HenH-1;
+																				HenJ = 1;
+																			}
 																			if (HenJ==0) {
-																				if (EKubo03S<=3) {
-																					if(Math.random()>=0.85) {
-																						EKubo03S = EKubo03S+1;
-																					}
-																					if(Math.random()>=0.80) {
-																						HenI = HenI-1;
-																					}
-																					HenH = HenH-1;
-																					HenJ = 1;
-																				}
-																				if (HenJ==0) {
-																					HenH = 0;
-																				}
+																				HenH = 0;
 																			}
 																		}
 																	}
@@ -1936,20 +1941,20 @@
 																			}
 																			HenH = HenH-1;
 																			HenJ = 1;
+																		}
+																		if (HenJ==0) {
+																			if (EKubo03S<=3) {
+																				if(Math.random()>=0.85) {
+																					EKubo03S = EKubo03S+1;
+																				}
+																				if(Math.random()>=0.80) {
+																					HenI = HenI-1;
+																				}
+																				HenH = HenH-1;
+																				HenJ = 1;
+																			}
 																			if (HenJ==0) {
-																				if (EKubo03S<=3) {
-																					if(Math.random()>=0.85) {
-																						EKubo03S = EKubo03S+1;
-																					}
-																					if(Math.random()>=0.80) {
-																						HenI = HenI-1;
-																					}
-																					HenH = HenH-1;
-																					HenJ = 1;
-																				}
-																				if (HenJ==0) {
-																					HenH = 0;
-																				}
+																				HenH = 0;
 																			}
 																		}
 																	}
@@ -2145,7 +2150,7 @@
 								var SakutekiY = 0.95;<!--ここまで1ずつ上昇-->
 							break;
 							default:
-								var SakutekiY = 0.98;<!--31機以上の偵察隊-->
+								var SakutekiY = 0.98;<!--31機以上の索敵隊-->
 							break;
 						}
 						<!--索敵計算-->
@@ -2683,13 +2688,22 @@
 							DataS02 = 0;
 						}
 						document.Data.S02.defaultValue = DataS02;
+						DataS03 = "夜間";
+						if (DataS02>=6) {
+							if(DataS02<=16) {
+								DataS03 = "日中";
+							}
+						}
+						document.Data.S03.defaultValue = DataS03;
 					}
 				}
 			}
 		}
 	}
+}
 <!--『撤退コマンド』-->
-	function Tettai() {
+function Tettai() {
+	if (Game==0) {
 		if (DataS02>16) {
 			alert("作戦中止、撤退します");
 			Bon = -5;
@@ -2709,6 +2723,7 @@
 			KekkaHannteiFnc()
 		}
 	}
+}
 <!--『敵艦隊初期設定』-->
 	var TekiKuboKazu = 1+Math.round(Math.random())+Math.round(Math.random());<!--ランダムに１～３隻-->
 	EKubo01S = 0;<!--敵第一空母、損傷なし＝ゼロ、小破＝１、中破＝２、大破＝３、撃沈＝４、存在せず＝５-->
@@ -2741,10 +2756,173 @@
 	<!--敵基地初期設定-->
 	var KichiSon = 0;<!--敵基地、損傷なし＝ゼロ、小破＝１・２・３、中破＝４・５・６、大破＝７・８・９、完全破壊＝１０>
 	var KichiSKazu = 5+Math.round(Math.random()*10);<!--敵基地戦闘機数初期設定、ランダムに５～１５機-->
+<!--『艦載機割合変更』-->
+function Wariai01() {
+	if (DataS01==1) {
+		if (DataS02==4) {
+			<!--第二空母、初期設定-->
+			C01S01 = 20;
+			C01S01A = 20;
+			window.document.C01.S01.defaultValue = C01S01+"/"+C01S01A;
+			C01S02 = 10;
+			C01S02A = 10;
+			window.document.C01.S02.defaultValue = C01S02+"/"+C01S02A;
+			C01S03 = 0;
+			C01S03A = 0;
+			window.document.C01.S03.defaultValue = C01S03+"/"+C01S03A;
+			C01S04 = 20;
+			C01S04A = 20;
+			window.document.C01.S04.defaultValue = C01S04+"/"+C01S04A;
+			<!--第二空母、初期設定-->
+			C02S01 = 20;
+			C02S01A = 20;
+			window.document.C02.S01.defaultValue = C02S01+"/"+C02S01A;
+			C02S02 = 10;
+			C02S02A = 10;
+			window.document.C02.S02.defaultValue = C02S02+"/"+C02S02A;
+			C02S03 = 0;
+			C02S03A = 0;
+			window.document.C02.S03.defaultValue = C02S03+"/"+C02S03A;
+			C02S04 = 20;
+			C02S04A = 20;
+			window.document.C02.S04.defaultValue = C02S04+"/"+C02S04A;
+		}
+	}
+}
+function Wariai02() {
+	if (DataS01==1) {
+		if (DataS02==4) {
+			<!--第二空母、初期設定-->
+			C01S01 = 20;
+			C01S01A = 20;
+			window.document.C01.S01.defaultValue = C01S01+"/"+C01S01A;
+			C01S02 = 10;
+			C01S02A = 10;
+			window.document.C01.S02.defaultValue = C01S02+"/"+C01S02A;
+			C01S03 = 5;
+			C01S03A = 5;
+			window.document.C01.S03.defaultValue = C01S03+"/"+C01S03A;
+			C01S04 = 15;
+			C01S04A = 15;
+			window.document.C01.S04.defaultValue = C01S04+"/"+C01S04A;
+			<!--第二空母、初期設定-->
+			C02S01 = 20;
+			C02S01A = 20;
+			window.document.C02.S01.defaultValue = C02S01+"/"+C02S01A;
+			C02S02 = 10;
+			C02S02A = 10;
+			window.document.C02.S02.defaultValue = C02S02+"/"+C02S02A;
+			C02S03 = 5;
+			C02S03A = 5;
+			window.document.C02.S03.defaultValue = C02S03+"/"+C02S03A;
+			C02S04 = 15;
+			C02S04A = 15;
+			window.document.C02.S04.defaultValue = C02S04+"/"+C02S04A;
+		}
+	}
+}
+function Wariai03() {
+	if (DataS01==1) {
+		if (DataS02==4) {
+			<!--第二空母、初期設定-->
+			C01S01 = 20;
+			C01S01A = 20;
+			window.document.C01.S01.defaultValue = C01S01+"/"+C01S01A;
+			C01S02 = 10;
+			C01S02A = 10;
+			window.document.C01.S02.defaultValue = C01S02+"/"+C01S02A;
+			C01S03 = 10;
+			C01S03A = 10;
+			window.document.C01.S03.defaultValue = C01S03+"/"+C01S03A;
+			C01S04 = 10;
+			C01S04A = 10;
+			window.document.C01.S04.defaultValue = C01S04+"/"+C01S04A;
+			<!--第二空母、初期設定-->
+			C02S01 = 20;
+			C02S01A = 20;
+			window.document.C02.S01.defaultValue = C02S01+"/"+C02S01A;
+			C02S02 = 10;
+			C02S02A = 10;
+			window.document.C02.S02.defaultValue = C02S02+"/"+C02S02A;
+			C02S03 = 10;
+			C02S03A = 10;
+			window.document.C02.S03.defaultValue = C02S03+"/"+C02S03A;
+			C02S04 = 10;
+			C02S04A = 10;
+			window.document.C02.S04.defaultValue = C02S04+"/"+C02S04A;
+		}
+	}
+}
+function Wariai04() {
+	if (DataS01==1) {
+		if (DataS02==4) {
+			<!--第二空母、初期設定-->
+			C01S01 = 20;
+			C01S01A = 20;
+			window.document.C01.S01.defaultValue = C01S01+"/"+C01S01A;
+			C01S02 = 10;
+			C01S02A = 10;
+			window.document.C01.S02.defaultValue = C01S02+"/"+C01S02A;
+			C01S03 = 15;
+			C01S03A = 15;
+			window.document.C01.S03.defaultValue = C01S03+"/"+C01S03A;
+			C01S04 = 5;
+			C01S04A = 5;
+			window.document.C01.S04.defaultValue = C01S04+"/"+C01S04A;
+			<!--第二空母、初期設定-->
+			C02S01 = 20;
+			C02S01A = 20;
+			window.document.C02.S01.defaultValue = C02S01+"/"+C02S01A;
+			C02S02 = 10;
+			C02S02A = 10;
+			window.document.C02.S02.defaultValue = C02S02+"/"+C02S02A;
+			C02S03 = 15;
+			C02S03A = 15;
+			window.document.C02.S03.defaultValue = C02S03+"/"+C02S03A;
+			C02S04 = 5;
+			C02S04A = 5;
+			window.document.C02.S04.defaultValue = C02S04+"/"+C02S04A;
+		}
+	}
+}
+function Wariai05() {
+	if (DataS01==1) {
+		if (DataS02==4) {
+			<!--第二空母、初期設定-->
+			C01S01 = 20;
+			C01S01A = 20;
+			window.document.C01.S01.defaultValue = C01S01+"/"+C01S01A;
+			C01S02 = 10;
+			C01S02A = 10;
+			window.document.C01.S02.defaultValue = C01S02+"/"+C01S02A;
+			C01S03 = 20;
+			C01S03A = 20;
+			window.document.C01.S03.defaultValue = C01S03+"/"+C01S03A;
+			C01S04 = 0;
+			C01S04A = 0;
+			window.document.C01.S04.defaultValue = C01S04+"/"+C01S04A;
+			<!--第二空母、初期設定-->
+			C02S01 = 20;
+			C02S01A = 20;
+			window.document.C02.S01.defaultValue = C02S01+"/"+C02S01A;
+			C02S02 = 10;
+			C02S02A = 10;
+			window.document.C02.S02.defaultValue = C02S02+"/"+C02S02A;
+			C02S03 = 20;
+			C02S03A = 20;
+			window.document.C02.S03.defaultValue = C02S03+"/"+C02S03A;
+			C02S04 = 0;
+			C02S04A = 0;
+			window.document.C02.S04.defaultValue = C02S04+"/"+C02S04A;
+		}
+	}
+}
 </script>
 
 <p></p>
-<p>【概要】</p>
+<p>###### ゲーム説明 ######</p>
+<p></p>
+<p>【ゲーム概要】</p>
 <p></p>
 <p>プレイヤーは空母艦隊の指揮官となり、敵航空基地への爆撃を成功させてください</p>
 <p></p>
@@ -2754,7 +2932,7 @@
 <p></p>
 <p>【操作方法】</p>
 <p></p>
-<p>「甲板」に存在する航空機で、「攻撃隊」「偵察隊」「艦隊直掩隊」を編成することができます。</p>
+<p>「甲板」に存在する航空機で、「攻撃隊」「索敵隊」「艦隊直掩隊」を編成することができます。</p>
 <p>編成した航空機隊は、「ターン終了」を実行することで、割り振られた任務を実行します。</p>
 <p>索敵隊は攻撃機のみ、艦隊直掩隊は戦闘機でのみ編成します。</p>
 <p></p>
@@ -2765,15 +2943,15 @@
 <p>【画面の見方】</p>
 <p></p>
 <p>「【甲板】攻撃機　15/20機」と表示されている場合、</p>
-<p>未行動の(攻撃隊・偵察隊に編入できる)攻撃機が15機、未行動・行動済みの攻撃機が合わせて20機、行動済みの攻撃機が(20-15で)5機という意味になります。</p>
+<p>未行動の(攻撃隊・索敵隊に編入できる)攻撃機が15機、未行動・行動済みの攻撃機が合わせて20機、行動済みの攻撃機が(20-15で)5機という意味になります。</p>
 <p></p>
 <p>「【第1次攻撃隊直掩】10機　第1次攻撃隊 帰投中」と表示されている場合、</p>
 <p>第一次攻撃隊の直掩任務を終えて帰投中の戦闘機が10機という意味ですので、これら10機の戦闘機を格納庫に収納する必要があります。</p>
 <p></p>
 <p>【その他ルール】</p>
 <p></p>
-<p>攻撃隊には基地と敵艦隊のいずれかを攻撃することが可能ですが、敵艦隊は偵察隊で発見しなければ攻撃することができません。</p>
-<p>また一度夜間になると敵艦隊の位置を見失うため、翌朝もう一度偵察隊で発見する必要があります。</p>
+<p>攻撃隊には基地と敵艦隊のいずれかを攻撃することが可能ですが、敵艦隊は索敵隊で発見しなければ攻撃することができません。</p>
+<p>また一度夜間になると敵艦隊の位置を見失うため、翌朝もう一度索敵隊で発見する必要があります。</p>
 <p></p>
 <p>艦隊直掩隊の戦闘機のみは、帰艦に要する時間が少ないため、直接甲板へ着艦することができます。</p>
 <p></p>
@@ -2787,7 +2965,23 @@
 <p></p>
 <p>【その他ポイント】</p>
 <p></p>
-<p>ゲーム開始時は夜間で始まります。一度ターン終了を実行し、まず早朝に敵基地への攻撃隊の発艦と並行して、敵艦隊を索敵するため偵察隊を編成しましょう。</p>
+<p>ゲーム開始時は夜間で始まります。一度ターン終了を実行し、まず早朝に敵基地への攻撃隊の発艦と並行して、敵艦隊を索敵するため索敵隊を編成しましょう。</p>
+<p></p>
+<p>###### 追加ルール：艦載機割合の変更 ######</p>
+<p></p>
+<p>ゲーム初めのターンのみ実行できます</p>
+
+<form name="Wariai" action="#">
+<input type="button" value="攻撃機20/戦闘機30" onclick="Wariai01()">
+<input type="button" value="攻撃機25/戦闘機25" onclick="Wariai02()">
+<input type="button" value="攻撃機30/戦闘機20(デフォルト)" onclick="Wariai03()">
+<input type="button" value="攻撃機35/戦闘機15" onclick="Wariai04()">
+<input type="button" value="攻撃機40/戦闘機10" onclick="Wariai05()">
+</form>
+
+<script>
+
+</script>
 
 </body>
 </html>
