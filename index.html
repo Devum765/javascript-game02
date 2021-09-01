@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>空母決戦 ver1.11</title>
+<title>空母決戦 ver1.12</title>
 </head>
 <body>
 
@@ -392,10 +392,6 @@ function Jikkou() {
 		var n = document.Select01.S01.selectedIndex;
 		switch (n) {
 			case 0: <!--第一空母-->
-				if (Kubo01Son>=3) {
-					alert("第一空母は大破以上の損傷のため、発着艦不能です");
-				}
-				if (Kubo01Son<3) {<!--ここだけ一段下がっていない、注意-->
 				var n = document.Select01.S02.selectedIndex;
 				switch (n) {
 					case 0: <!--攻撃機-->
@@ -553,26 +549,31 @@ function Jikkou() {
 										alert("帰投した攻撃隊は格納庫へ帰還させなければなりません");
 									break;
 									case 1:
-										if (Kougeki==0) {
-											if (C3<KisuuHyouji) {
-												alert("移動可能な航空機が存在しません");
-											}
-											if (C3>=KisuuHyouji) {
-												C3 = C3-KisuuHyouji;
-												document.C00.S04.defaultValue = C3;
-												C01S03A = C01S03A+KisuuHyouji;
-												document.C01.S03.defaultValue = C01S03+"/"+C01S03A;
-											}
+										if (Kubo01Son>=3) {
+											alert("第一空母は大破以上の損傷のため、発着艦不能です");
 										}
-										if (Kougeki==1) {
-											if (C1<KisuuHyouji) {
-												alert("移動可能な航空機が存在しません");
+										if (Kubo01Son<3) {
+											if (Kougeki==0) {
+												if (C3<KisuuHyouji) {
+													alert("移動可能な航空機が存在しません");
+												}
+												if (C3>=KisuuHyouji) {
+													C3 = C3-KisuuHyouji;
+													document.C00.S04.defaultValue = C3;
+													C01S03A = C01S03A+KisuuHyouji;
+													document.C01.S03.defaultValue = C01S03+"/"+C01S03A;
+												}
 											}
-											if (C1>=KisuuHyouji) {
-												C1 = C1-KisuuHyouji;
-												document.C00.S02.defaultValue = C1;
-												C01S03A = C01S03A+KisuuHyouji;
-												document.C01.S03.defaultValue = C01S03+"/"+C01S03A;
+											if (Kougeki==1) {
+												if (C1<KisuuHyouji) {
+													alert("移動可能な航空機が存在しません");
+												}
+												if (C1>=KisuuHyouji) {
+													C1 = C1-KisuuHyouji;
+													document.C00.S02.defaultValue = C1;
+													C01S03A = C01S03A+KisuuHyouji;
+													document.C01.S03.defaultValue = C01S03+"/"+C01S03A;
+												}
 											}
 										}
 									break;
@@ -600,14 +601,19 @@ function Jikkou() {
 										alert("帰投した索敵隊は格納庫へ帰還させなければなりません");
 									break;
 									case 1:
-										if (C5<KisuuHyouji) {
-											alert("移動可能な航空機が存在しません");
+										if (Kubo01Son>=3) {
+											alert("第一空母は大破以上の損傷のため、発着艦不能です");
 										}
-										if (C5>=KisuuHyouji) {
-											C5 = C5-KisuuHyouji;
-											document.C00.S06.defaultValue = C5+"/"+C5A;
-											C01S03A = C01S03A+KisuuHyouji;
-											document.C01.S03.defaultValue = C01S03+"/"+C01S03A;
+										if (Kubo01Son<3) {
+											if (C5<KisuuHyouji) {
+												alert("移動可能な航空機が存在しません");
+											}
+											if (C5>=KisuuHyouji) {
+												C5 = C5-KisuuHyouji;
+												document.C00.S06.defaultValue = C5+"/"+C5A;
+												C01S03A = C01S03A+KisuuHyouji;
+												document.C01.S03.defaultValue = C01S03+"/"+C01S03A;
+											}
 										}
 									break;
 									case 2:
@@ -776,26 +782,31 @@ function Jikkou() {
 										alert("帰投した攻撃隊は格納庫へ帰還させなければなりません");
 									break;
 									case 1:
-										if (Kougeki==0) {
-											if (C4<KisuuHyouji) {
-												alert("移動可能な航空機が存在しません");
-											}
-											if (C4>=KisuuHyouji) {
-												C4 = C4-KisuuHyouji;
-												document.C00.S05.defaultValue = C4;
-												C01S04A = C01S04A+KisuuHyouji;
-												document.C01.S04.defaultValue = C01S04+"/"+C01S04A;
-											}
+										if (Kubo01Son>=3) {
+											alert("第一空母は大破以上の損傷のため、発着艦不能です");
 										}
-										if (Kougeki==1) {
-											if (C2<KisuuHyouji) {
-												alert("移動可能な航空機が存在しません");
+										if (Kubo01Son<3) {
+											if (Kougeki==0) {
+												if (C4<KisuuHyouji) {
+													alert("移動可能な航空機が存在しません");
+												}
+												if (C4>=KisuuHyouji) {
+													C4 = C4-KisuuHyouji;
+													document.C00.S05.defaultValue = C4;
+													C01S04A = C01S04A+KisuuHyouji;
+													document.C01.S04.defaultValue = C01S04+"/"+C01S04A;
+												}
 											}
-											if (C2>=KisuuHyouji) {
-												C2 = C2-KisuuHyouji;
-												document.C00.S03.defaultValue = C2;
-												C01S04A = C01S04A+KisuuHyouji;
-												document.C01.S04.defaultValue = C01S04+"/"+C01S04A;
+											if (Kougeki==1) {
+												if (C2<KisuuHyouji) {
+													alert("移動可能な航空機が存在しません");
+												}
+												if (C2>=KisuuHyouji) {
+													C2 = C2-KisuuHyouji;
+													document.C00.S03.defaultValue = C2;
+													C01S04A = C01S04A+KisuuHyouji;
+													document.C01.S04.defaultValue = C01S04+"/"+C01S04A;
+												}
 											}
 										}
 									break;
@@ -817,25 +828,35 @@ function Jikkou() {
 								var n = document.Select01.S04.selectedIndex;
 								switch (n) {
 									case 0:
-										if (C0<KisuuHyouji) {
-											alert("移動可能な航空機が存在しません");
+										if (Kubo01Son>=3) {
+											alert("第一空母は大破以上の損傷のため、発着艦不能です");
 										}
-										if (C0>=KisuuHyouji) {
-											C0 = C0-KisuuHyouji;
-											document.C00.S01.defaultValue = C0+"/"+C0A;
-											C01S02A = C01S02A+KisuuHyouji;
-											document.C01.S02.defaultValue = C01S02+"/"+C01S02A;
+										if (Kubo01Son<3) {
+											if (C0<KisuuHyouji) {
+												alert("移動可能な航空機が存在しません");
+											}
+											if (C0>=KisuuHyouji) {
+												C0 = C0-KisuuHyouji;
+												document.C00.S01.defaultValue = C0+"/"+C0A;
+												C01S02A = C01S02A+KisuuHyouji;
+												document.C01.S02.defaultValue = C01S02+"/"+C01S02A;
+											}
 										}
 									break;
 									case 1:
-										if (C0<KisuuHyouji) {
-											alert("移動可能な航空機が存在しません");
+										if (Kubo01Son>=3) {
+											alert("第一空母は大破以上の損傷のため、発着艦不能です");
 										}
-										if (C0>=KisuuHyouji) {
-											C0 = C0-KisuuHyouji;
-											document.C00.S01.defaultValue = C0+"/"+C0A;
-											C01S04A = C01S04A+KisuuHyouji;
-											document.C01.S04.defaultValue = C01S04+"/"+C01S04A;
+										if (Kubo01Son<3) {
+											if (C0<KisuuHyouji) {
+												alert("移動可能な航空機が存在しません");
+											}
+											if (C0>=KisuuHyouji) {
+												C0 = C0-KisuuHyouji;
+												document.C00.S01.defaultValue = C0+"/"+C0A;
+												C01S04A = C01S04A+KisuuHyouji;
+												document.C01.S04.defaultValue = C01S04+"/"+C01S04A;
+											}
 										}
 									break;
 									case 2:
@@ -857,14 +878,9 @@ function Jikkou() {
 							break;
 						}
 					break;
-				}<!--ここだけ一段下がっていない、注意-->
 				}
 			break;
 			case 1: <!--第二空母-->
-				if (Kubo02Son>=3) {
-					alert("第一空母は大破以上の損傷のため、発着艦不能です");
-				}
-				if (Kubo02Son<3) {<!--ここだけ一段下がっていない、注意-->
 				var n = document.Select01.S02.selectedIndex;
 				switch (n) {
 					case 0: <!--攻撃機-->
@@ -1022,26 +1038,31 @@ function Jikkou() {
 										alert("帰投した攻撃隊は格納庫へ帰還させなければなりません");
 									break;
 									case 1:
-										if (Kougeki==0) {
-											if (C3<KisuuHyouji) {
-												alert("移動可能な航空機が存在しません");
-											}
-											if (C3>=KisuuHyouji) {
-												C3 = C3-KisuuHyouji;
-												document.C00.S04.defaultValue = C3;
-												C02S03A = C02S03A+KisuuHyouji;
-												document.C02.S03.defaultValue = C02S03+"/"+C02S03A;
-											}
+										if (Kubo02Son>=3) {
+											alert("第二空母は大破以上の損傷のため、発着艦不能です");
 										}
-										if (Kougeki==1) {
-											if (C1<KisuuHyouji) {
-												alert("移動可能な航空機が存在しません");
+										if (Kubo02Son<3) {
+											if (Kougeki==0) {
+												if (C3<KisuuHyouji) {
+													alert("移動可能な航空機が存在しません");
+												}
+												if (C3>=KisuuHyouji) {
+													C3 = C3-KisuuHyouji;
+													document.C00.S04.defaultValue = C3;
+													C02S03A = C02S03A+KisuuHyouji;
+													document.C02.S03.defaultValue = C02S03+"/"+C02S03A;
+												}
 											}
-											if (C1>=KisuuHyouji) {
-												C1 = C1-KisuuHyouji;
-												document.C00.S02.defaultValue = C1;
-												C02S03A = C02S03A+KisuuHyouji;
-												document.C02.S03.defaultValue = C02S03+"/"+C02S03A;
+											if (Kougeki==1) {
+												if (C1<KisuuHyouji) {
+													alert("移動可能な航空機が存在しません");
+												}
+												if (C1>=KisuuHyouji) {
+													C1 = C1-KisuuHyouji;
+													document.C00.S02.defaultValue = C1;
+													C02S03A = C02S03A+KisuuHyouji;
+													document.C02.S03.defaultValue = C02S03+"/"+C02S03A;
+												}
 											}
 										}
 									break;
@@ -1069,14 +1090,19 @@ function Jikkou() {
 										alert("帰投した索敵隊は格納庫へ帰還させなければなりません");
 									break;
 									case 1:
-										if (C5<KisuuHyouji) {
-											alert("移動可能な航空機が存在しません");
+										if (Kubo02Son>=3) {
+											alert("第二空母は大破以上の損傷のため、発着艦不能です");
 										}
-										if (C5>=KisuuHyouji) {
-											C5 = C5-KisuuHyouji;
-											document.C00.S06.defaultValue = C5+"/"+C5A;
-											C02S03A = C02S03A+KisuuHyouji;
-											document.C02.S03.defaultValue = C02S03+"/"+C02S03A;
+										if (Kubo02Son<3) {
+											if (C5<KisuuHyouji) {
+												alert("移動可能な航空機が存在しません");
+											}
+											if (C5>=KisuuHyouji) {
+												C5 = C5-KisuuHyouji;
+												document.C00.S06.defaultValue = C5+"/"+C5A;
+												C02S03A = C02S03A+KisuuHyouji;
+												document.C02.S03.defaultValue = C02S03+"/"+C02S03A;
+											}
 										}
 									break;
 									case 2:
@@ -1237,26 +1263,31 @@ function Jikkou() {
 										alert("帰投した攻撃隊は格納庫へ帰還させなければなりません");
 									break;
 									case 1:
-										if (Kougeki==0) {
-											if (C4<KisuuHyouji) {
-												alert("移動可能な航空機が存在しません");
-											}
-											if (C4>=KisuuHyouji) {
-												C4 = C4-KisuuHyouji;
-												document.C00.S05.defaultValue = C4;
-												C02S04A = C02S04A+KisuuHyouji;
-												document.C02.S04.defaultValue = C02S04+"/"+C02S04A;
-											}
+										if (Kubo02Son>=3) {
+											alert("第二空母は大破以上の損傷のため、発着艦不能です");
 										}
-										if (Kougeki==1) {
-											if (C2<KisuuHyouji) {
-												alert("移動可能な航空機が存在しません");
+										if (Kubo02Son<3) {
+											if (Kougeki==0) {
+												if (C4<KisuuHyouji) {
+													alert("移動可能な航空機が存在しません");
+												}
+												if (C4>=KisuuHyouji) {
+													C4 = C4-KisuuHyouji;
+													document.C00.S05.defaultValue = C4;
+													C02S04A = C02S04A+KisuuHyouji;
+													document.C02.S04.defaultValue = C02S04+"/"+C02S04A;
+												}
 											}
-											if (C2>=KisuuHyouji) {
-												C2 = C2-KisuuHyouji;
-												document.C00.S03.defaultValue = C2;
-												C02S04A = C02S04A+KisuuHyouji;
-												document.C02.S04.defaultValue = C02S04+"/"+C02S04A;
+											if (Kougeki==1) {
+												if (C2<KisuuHyouji) {
+													alert("移動可能な航空機が存在しません");
+												}
+												if (C2>=KisuuHyouji) {
+													C2 = C2-KisuuHyouji;
+													document.C00.S03.defaultValue = C2;
+													C02S04A = C02S04A+KisuuHyouji;
+													document.C02.S04.defaultValue = C02S04+"/"+C02S04A;
+												}
 											}
 										}
 									break;
@@ -1278,25 +1309,35 @@ function Jikkou() {
 								var n = document.Select01.S04.selectedIndex;
 								switch (n) {
 									case 0:
-										if (C0<KisuuHyouji) {
-											alert("移動可能な航空機が存在しません");
+										if (Kubo02Son>=3) {
+											alert("第二空母は大破以上の損傷のため、発着艦不能です");
 										}
-										if (C0>=KisuuHyouji) {
-											C0 = C0-KisuuHyouji;
-											document.C00.S01.defaultValue = C0+"/"+C0A;
-											C02S02A = C02S02A+KisuuHyouji;
-											document.C02.S02.defaultValue = C02S02+"/"+C02S02A;
+										if (Kubo02Son<3) {
+											if (C0<KisuuHyouji) {
+												alert("移動可能な航空機が存在しません");
+											}
+											if (C0>=KisuuHyouji) {
+												C0 = C0-KisuuHyouji;
+												document.C00.S01.defaultValue = C0+"/"+C0A;
+												C02S02A = C02S02A+KisuuHyouji;
+												document.C02.S02.defaultValue = C02S02+"/"+C02S02A;
+											}
 										}
 									break;
 									case 1:
-										if (C0<KisuuHyouji) {
-											alert("移動可能な航空機が存在しません");
+										if (Kubo02Son>=3) {
+											alert("第二空母は大破以上の損傷のため、発着艦不能です");
 										}
-										if (C0>=KisuuHyouji) {
-											C0 = C0-KisuuHyouji;
-											document.C00.S01.defaultValue = C0+"/"+C0A;
-											C02S04A = C02S04A+KisuuHyouji;
-											document.C02.S04.defaultValue = C02S04+"/"+C02S04A;
+										if (Kubo02Son<3) {
+											if (C0<KisuuHyouji) {
+												alert("移動可能な航空機が存在しません");
+											}
+											if (C0>=KisuuHyouji) {
+												C0 = C0-KisuuHyouji;
+												document.C00.S01.defaultValue = C0+"/"+C0A;
+												C02S04A = C02S04A+KisuuHyouji;
+												document.C02.S04.defaultValue = C02S04+"/"+C02S04A;
+											}
 										}
 									break;
 									case 2:
@@ -1319,7 +1360,6 @@ function Jikkou() {
 						}
 					break;
 				}
-				}<!--ここだけ一段下がっていない、注意-->
 			break;
 		}
 	}
@@ -2755,7 +2795,7 @@ function Tettai() {
 	var KougekiKan = 0;<!--今ターン中に敵空母が攻撃を実施した-->
 	<!--敵基地初期設定-->
 	var KichiSon = 0;<!--敵基地、損傷なし＝ゼロ、小破＝１・２・３、中破＝４・５・６、大破＝７・８・９、完全破壊＝１０>
-	var KichiSKazu = 5+Math.round(Math.random()*10);<!--敵基地戦闘機数初期設定、ランダムに５～１５機-->
+	var KichiSKazu = 5+Math.round(Math.random()*10); <!--敵基地戦闘機数初期設定、ランダムに５～１５機-->
 <!--『艦載機割合変更』-->
 function Wariai01() {
 	if (DataS01==1) {
